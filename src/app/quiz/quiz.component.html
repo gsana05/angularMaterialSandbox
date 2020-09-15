@@ -1,0 +1,186 @@
+<p>quiz works!</p>
+<div class="hero-image">
+    <div class="hero-text">
+      <h1>basic question formats</h1>
+    </div>
+  </div>
+<div class="card-page">
+    <div class="card-page-child">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>Any feedback for the stream?</mat-card-title>
+            </mat-card-header>
+
+            <mat-card-content>
+                <form class="example-form">
+                    <mat-form-field class="example-full-width">
+                    <mat-label>Leave a comment</mat-label>
+                    <textarea matInput placeholder=""></textarea>
+                    </mat-form-field>
+                </form>
+            </mat-card-content>
+
+        </mat-card>
+    </div>
+</div>
+
+<hr>
+
+<div class="card-page">
+    <div class="card-page-child">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>Do you like football?</mat-card-title>
+            </mat-card-header>
+
+            <mat-card-content>
+                <mat-radio-group labelPosition="before" aria-label="Select an option">
+                    <mat-radio-button value="1">Option 1</mat-radio-button>
+                    <mat-radio-button value="2">Option 2</mat-radio-button>
+                    <mat-radio-button value="3">Option 3</mat-radio-button>
+                  </mat-radio-group>
+            </mat-card-content>
+
+        </mat-card>
+    </div>
+</div>
+
+<hr>
+
+<div class="card-page">
+    <div class="card-page-child">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>SElect what skills you have?</mat-card-title>
+            </mat-card-header>
+
+            <mat-card-content>
+                <section class="example-section">
+                    <mat-checkbox class="example-margin">Check me!</mat-checkbox>
+                    <mat-checkbox class="example-margin" [disabled]="true">Disabled</mat-checkbox>
+                  </section>
+                  
+                  <section class="example-section">
+                    <span class="example-list-section">
+                      <mat-checkbox class="example-margin"
+                                    [checked]="allComplete"
+                                    [indeterminate]="someComplete()"
+                                    (change)="setAll($event.checked)">
+                        {{task.name}}
+                      </mat-checkbox>
+                    </span>
+                    <span class="example-list-section">
+                      <ul>
+                        <li *ngFor="let subtask of task.subtasks">
+                          <mat-checkbox [(ngModel)]="subtask.completed"
+                                        [color]="subtask.color"
+                                        (ngModelChange)="updateAllComplete()">
+                            {{subtask.name}}
+                          </mat-checkbox>
+                        </li>
+                      </ul>
+                    </span>
+                  </section>
+            </mat-card-content>
+
+        </mat-card>
+    </div>
+</div>
+
+<div class="hero-image">
+    <div class="hero-text">
+      <h1>list of questions with passed in data</h1>
+    </div>
+  </div>
+
+<mat-selection-list #list>
+    <mat-list-item *ngFor="let tta of listOfQuestions" [selected]="tta.selected" 
+        (click)="onAreaListControlChanged(list)" [value]="tta.name">
+        {{tta.name}}
+        <!--
+          <mat-icon mat-list-icon>Home</mat-icon> 
+           <p style="text-align:center" matLine> {{tta.type}} </p> 
+        -->
+         
+    <h3 style="text-align:center" matLine> {{tta.question}} </h3>
+   
+
+    <div matLine class="card-page" [style.visibility]="(tta.type == 2) ? 'visible' : 'hidden' ">
+        <div class="card-page-child">
+            <mat-card>
+               
+    
+                <mat-card-content>
+                    <mat-radio-group labelPosition="before" aria-label="Select an option">
+                        <mat-radio-button value="1">Option 1</mat-radio-button>
+                        <mat-radio-button value="2">Option 2</mat-radio-button>
+                        <mat-radio-button value="3">Option 3</mat-radio-button>
+                      </mat-radio-group>
+                </mat-card-content>
+    
+            </mat-card>
+        </div>
+    </div>
+
+    <div matLine class="card-page" [style.visibility]="(tta.type == 3) ? 'visible' : 'hidden' ">
+        <div class="card-page-child">
+            <mat-card>
+                <mat-card-content>
+                    <form class="example-form">
+                        <mat-form-field class="example-full-width">
+                        <mat-label>Leave a comment</mat-label>
+                        <textarea matInput placeholder=""></textarea>
+                        </mat-form-field>
+                    </form>
+                </mat-card-content>
+    
+            </mat-card>
+        </div>
+    </div>
+
+    <div matLine class="card-page" [style.visibility]="(tta.type == 1) ? 'visible' : 'hidden' ">
+        <div class="card-page-child">
+            <mat-card>
+                
+    
+                <mat-card-content>
+                    <section class="example-section">
+                        <mat-checkbox class="example-margin">Check me!</mat-checkbox>
+                        <mat-checkbox class="example-margin">Check me!</mat-checkbox>
+                        <mat-checkbox class="example-margin" [disabled]="true">Disabled</mat-checkbox>
+                      </section>
+                      <!--
+
+                      
+                      <section class="example-section">
+                        <span class="example-list-section">
+                          <mat-checkbox class="example-margin"
+                                        [checked]="allComplete"
+                                        [indeterminate]="someComplete()"
+                                        (change)="setAll($event.checked)">
+                            {{task.name}}
+                          </mat-checkbox>
+                        </span>
+                        <span class="example-list-section">
+                          <ul>
+                            <li *ngFor="let subtask of task.subtasks">
+                              <mat-checkbox [(ngModel)]="subtask.completed"
+                                            [color]="subtask.color"
+                                            (ngModelChange)="updateAllComplete()">
+                                {{subtask.name}}
+                              </mat-checkbox>
+                            </li>
+                          </ul>
+                        </span>
+                      </section>
+-->
+                </mat-card-content>
+    
+            </mat-card>
+        </div>
+    </div>
+
+
+    <mat-divider></mat-divider>
+    </mat-list-item>
+</mat-selection-list>

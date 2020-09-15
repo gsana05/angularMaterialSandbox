@@ -1,0 +1,116 @@
+$blue: #3bbfce;
+$margin: 16px;
+$white: #fafafa; 
+
+@mixin buttonStyle {
+    color: $white; 
+    background-color: $blue; 
+    text-transform: uppercase;
+    width: 100%;
+  }
+
+@mixin important-text {
+    font-size: 150%;
+    margin-bottom: 64px;
+  }
+
+  %message-shared {
+    border: 1px solid #ccc;
+    padding: 10px;
+    color: #333;
+  }
+
+.card-page { // put div in the middle of screen 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+
+mat-form-field {
+    display: block;
+}
+
+
+button.log-in {
+    @include buttonStyle; 
+}
+
+
+// nesting 
+ mat-card {
+    @extend %message-shared;
+    border-color: yellow;
+        width: 100%;
+    
+        mat-card-header {
+            display: flex;
+            justify-content: center;
+    
+            mat-card-title {
+                @include important-text;
+                
+            }
+        }
+    }
+
+    mat-flat-button{
+        color: aqua;
+    }
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) { 
+    mat-card {
+        padding: 34px;
+    }
+ }
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) { 
+    mat-card {
+        padding: 44px;
+    }
+ }
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) { 
+    mat-card {
+        padding: 54px;
+    }
+ }
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { 
+    mat-card {
+        padding: 64px;
+    }
+ }
+
+
+ #left {
+    width: 47%;
+    float: left;
+    margin-right:6%;
+}
+ 
+#right {
+    width: 47%;
+    float: right;
+}
+ 
+.clearfix:after {
+    content:"\0020";
+    display:block;
+    height:0;
+    clear:both;
+    visibility:hidden;
+    overflow:hidden;
+}
+ 
+.clearfix {
+    display:block;
+}
+
+
+
